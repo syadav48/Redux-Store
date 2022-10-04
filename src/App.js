@@ -1,12 +1,14 @@
-import User from "./User";
+
+//import User from "./User";
 //import Counter from "./Counter";
+
+import Products from "./Products";
 
 function App() {
   return (
     <div className="App">
-      
-      {/* <Counter /> */}
-      <User />
+      {/* <User /> */}
+    <Products />
     </div>
   );
 }
