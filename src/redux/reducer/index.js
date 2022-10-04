@@ -1,4 +1,4 @@
-import { DECREMENT, DECREMENTBYAMOUNT, FETCHREQFAILURE, FETCHREQSUCCESS, FETCHREQUEST, INCREMENT, INCREMENTBYAMOUNT } from "../actionType.js";
+import { DECREMENT, DECREMENTBYAMOUNT, FETCHREQFAILURE, FETCHREQSUCCESS, FETCHREQUEST, FETCH_PRODUCTS, INCREMENT, INCREMENTBYAMOUNT } from "../actionType.js";
 
 
 const initialAmount = {
@@ -11,6 +11,9 @@ const initialState = {
     error: ''
 }
 
+const productState = {
+    products: []
+}
 
 
 export const reducer = (state= initialAmount, action) => {
@@ -50,6 +53,18 @@ export const userReducer = (state = initialState, action) => {
             }    
         default:
         return state
+    }
+}
+
+export const productReducer = (state = productState, action) => {   
+    switch(action.type){
+        
+        case FETCH_PRODUCTS:
+            return {...state, 
+                products: action.payload,
+            }
+        default:
+            return state
     }
 }
 

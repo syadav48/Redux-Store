@@ -1,5 +1,6 @@
 import axios from "axios"
-import { DECREMENT, DECREMENTBYAMOUNT, FETCHREQSUCCESS, FETCHREQUEST, INCREMENT, INCREMENTBYAMOUNT } from "../actionType.js"
+import { DECREMENT, DECREMENTBYAMOUNT, FETCHREQSUCCESS, FETCHREQUEST, FETCH_PRODUCTS, INCREMENT, INCREMENTBYAMOUNT } from "../actionType.js"
+//import api from "../api.js"
 
 export const increment = () => {
     return {
@@ -60,3 +61,20 @@ export const fetchUser = () => {
         })
     }
 }
+
+export const fetchGroceriesSuccess = (data) => {
+    return{
+        type: FETCH_PRODUCTS, 
+        payload: data
+    }
+}
+
+export const fetchProducts = () => async (dispatch) => {
+    try {
+        const response = await axios.get('https://fakestoreapi.com/products')
+        dispatch(fetchGroceriesSuccess(response.data))
+    } catch (error) {
+        console.log(error);
+    }
+}
+
